@@ -9,9 +9,7 @@ on:
     paths:
       - ".github/workflows/**"
 
-permissions:
-  contents: read
-  security-events: write
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
@@ -23,8 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      contents: read
-      security-events: write
+      security-events: write # Required for upload-sarif (used by zizmor-action) to upload SARIF files.
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
