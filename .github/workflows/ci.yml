@@ -33,6 +33,7 @@ concurrency:
 jobs:
   changed:
     name: Get changed files
+    timeout-minutes: 10
     runs-on: ubuntu-slim
     outputs:
       should_skip: ${{ steps.changed-files.outputs.only_changed == 'true' }}
@@ -133,6 +134,7 @@ jobs:
   test-passed:
     if: (!cancelled() && !failure())
     needs: test
+    timeout-minutes: 5
     runs-on: ubuntu-slim
     name: Build & Test Passed or Skipped
     steps:
@@ -141,6 +143,7 @@ jobs:
   test-failed:
     if: (!cancelled() && failure())
     needs: test
+    timeout-minutes: 5
     runs-on: ubuntu-slim
     name: Build & Test Failed
     steps:
