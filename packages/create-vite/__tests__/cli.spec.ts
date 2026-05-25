@@ -218,15 +218,24 @@ test('return help usage how to use create-vite', () => {
   const { stdout } = run(['--help'], { cwd: import.meta.dirname })
   const message = 'Usage: create-vite [OPTION]... [DIRECTORY]'
   expect(stdout).toContain(message)
+  expect(stdout).toContain('-t, --template NAME')
   expect(stdout).toContain('-i, --immediate / --no-immediate')
   expect(stdout).toContain('--overwrite')
+  expect(stdout).toContain('--interactive / --no-interactive')
   expect(stdout).toContain('-h, --help')
+  expect(stdout).toContain('Available templates:')
 })
 
 test('return help usage how to use create-vite with -h alias', () => {
   const { stdout } = run(['-h'], { cwd: import.meta.dirname })
   const message = 'Usage: create-vite [OPTION]... [DIRECTORY]'
   expect(stdout).toContain(message)
+  expect(stdout).toContain('-t, --template NAME')
+  expect(stdout).toContain('-i, --immediate / --no-immediate')
+  expect(stdout).toContain('--overwrite')
+  expect(stdout).toContain('--interactive / --no-interactive')
+  expect(stdout).toContain('-h, --help')
+  expect(stdout).toContain('Available templates:')
 })
 
 test('sets index.html title to project name', () => {
