@@ -20,7 +20,6 @@ permissions:
 
 jobs:
   kimi-review:
-    if: github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,4 +33,4 @@ jobs:
         with:
           kimi_api_key: ${{ secrets.MOONSHOT_API_KEY }}
           fail_on: warning
-          max_autofix_iterations: 10
+          autofix: false
