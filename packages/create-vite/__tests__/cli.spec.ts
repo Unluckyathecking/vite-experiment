@@ -214,13 +214,15 @@ test('skip prompts when --no-interactive is passed', () => {
   expect(stdout).toContain('Done. Now run:')
 })
 
-const expectHelpUsage = (stdout: string) => {
-  expect(stdout).toContain('Usage: create-vite [OPTION]... [DIRECTORY]')
-  expect(stdout).toContain('-t, --template NAME')
-  expect(stdout).toContain('-i, --immediate / --no-immediate')
-  expect(stdout).toContain('--overwrite')
-  expect(stdout).toContain('--interactive / --no-interactive')
-  expect(stdout).toContain('-h, --help')
+const expectHelpUsage = (stdout: any) => {
+  const str = stdout?.toString() ?? ''
+  expect(str).toContain('Usage: create-vite [OPTION]... [DIRECTORY]')
+  expect(str).toContain('-t, --template NAME')
+  expect(str).toContain('-i, --immediate / --no-immediate')
+  expect(str).toContain('--overwrite')
+  expect(str).toContain('--interactive / --no-interactive')
+  expect(str).toContain('-h, --help')
+  expect(str).toContain('Available templates:')
 }
 
 test('return help usage how to use create-vite', () => {
