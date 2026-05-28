@@ -214,19 +214,25 @@ test('skip prompts when --no-interactive is passed', () => {
   expect(stdout).toContain('Done. Now run:')
 })
 
+const expectHelpUsage = (stdout: any) => {
+  const str = stdout?.toString() ?? ''
+  expect(str).toContain('Usage: create-vite [OPTION]... [DIRECTORY]')
+  expect(str).toContain('-t, --template NAME')
+  expect(str).toContain('-i, --immediate / --no-immediate')
+  expect(str).toContain('--overwrite')
+  expect(str).toContain('--interactive / --no-interactive')
+  expect(str).toContain('-h, --help')
+  expect(str).toContain('Available templates:')
+}
+
 test('return help usage how to use create-vite', () => {
   const { stdout } = run(['--help'], { cwd: import.meta.dirname })
-  const message = 'Usage: create-vite [OPTION]... [DIRECTORY]'
-  expect(stdout).toContain(message)
-  expect(stdout).toContain('-i, --immediate / --no-immediate')
-  expect(stdout).toContain('--overwrite')
-  expect(stdout).toContain('-h, --help')
+  expectHelpUsage(stdout)
 })
 
 test('return help usage how to use create-vite with -h alias', () => {
   const { stdout } = run(['-h'], { cwd: import.meta.dirname })
-  const message = 'Usage: create-vite [OPTION]... [DIRECTORY]'
-  expect(stdout).toContain(message)
+  expectHelpUsage(stdout)
 })
 
 test('sets index.html title to project name', () => {
