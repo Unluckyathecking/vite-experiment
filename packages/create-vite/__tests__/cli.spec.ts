@@ -227,12 +227,12 @@ const expectHelpUsage = (stdout: string) => {
 
 test('return help usage how to use create-vite', () => {
   const { stdout } = run(['--help'], { cwd: import.meta.dirname })
-  expectHelpUsage(stdout)
+  expectHelpUsage(stdout as string)
 })
 
 test('return help usage how to use create-vite with -h alias', () => {
   const { stdout } = run(['-h'], { cwd: import.meta.dirname })
-  expectHelpUsage(stdout)
+  expectHelpUsage(stdout as string)
 })
 
 test('sets index.html title to project name', () => {
