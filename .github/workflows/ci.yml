@@ -150,7 +150,7 @@ jobs:
       - run: echo "Build & Test Failed"
 
   lint:
-    timeout-minutes: 10
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     name: "Lint: node-24, ubuntu-latest"
     steps:
