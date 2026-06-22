@@ -214,8 +214,8 @@ test('skip prompts when --no-interactive is passed', () => {
   expect(stdout).toContain('Done. Now run:')
 })
 
-const expectHelpUsage = (stdout: any) => {
-  const str = stdout?.toString() ?? ''
+const expectHelpUsage = (stdout: string) => {
+  const str = stdout
   expect(str).toContain('Usage: create-vite [OPTION]... [DIRECTORY]')
   expect(str).toContain('-t, --template NAME')
   expect(str).toContain('-i, --immediate / --no-immediate')
